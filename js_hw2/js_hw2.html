@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_hw1</title>
+</head>
+<body>
+
+<script>
+  //- Створити масив, наповнити його 10 елементами будь-якого типу, вивести кожен елемент в консоль
+  let arr = [0,1,2,3,4,5,6,7,8,9]
+  console.log(arr)
+  console.log("NEXT TASK")
+  //- Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre.
+  //- Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre, authors. Поле "автори" - являється  масивом. Кожен автор має поля name та age.
+
+  let book1 = {
+    title: 'War and World',
+    pageCount: '500',
+    genre: 'History Documentical',
+    authors: [{name: 'Arthur Bail'}, {age: 20}]
+  }
+  let book2 = {
+    title: 'Stories of Sherlock Holmes',
+    pageCount: '300',
+    genre: 'Detective',
+    authors: [{name: 'McDonald Brebon'}, {age: 34}]
+  }
+  let book3 = {
+    title: 'Geography Book',
+    pageCount: '150',
+    genre: 'Educational',
+    authors: [{name: 'Courtney Kratz'}, {age: 62}]
+  }
+
+  //- Створити масив з 10 об'єктами які описують сутніть "користувач". Поля: name, username,password. Вивести в консоль пароль кожного користувача
+  let user = [
+    {
+      name:'Aboba',
+      username:'Gaboba',
+      password:'Abobus'
+    },
+    {
+      name:'Gabriel',
+      username:'Queen',
+      password:'Loloka'
+    },
+    {
+      name:'Zahri',
+      username:'The King',
+      password:'Jungles'
+    },
+    {
+      name:'Courtney',
+      username:'Cinderella',
+      password:'Movies'
+    },
+    {
+      name:'Bob',
+      username:'Mr Bin',
+      password:'MiniCooper'
+    },
+    {
+      name:'Mike',
+      username:'Dog',
+      password:'Bone'
+    },
+    {
+      name:'Lolita',
+      username:'Cat',
+      password:'Whiskas'
+    },
+    {
+      name:'Rake',
+      username:'The High Mountain',
+      password:'lake'
+    },
+    {
+      name:'Jorge',
+      username:'Peppa Pig',
+      password:'PigFamily'
+    },
+    {
+      name:'Britney',
+      username:'Disney Princess',
+      password:'Pixar'
+    }
+  ]
+  console.log(user[0].password)
+  console.log(user[1].password)
+  console.log(user[2].password)
+  console.log(user[3].password)
+  console.log(user[4].password)
+  console.log(user[5].password)
+  console.log(user[6].password)
+  console.log(user[7].password)
+  console.log(user[8].password)
+  console.log(user[9].password)
+  console.log("NEXT TASK")
+
+  //  - Є змінна х, якій ви надаєте довільне числове значення.
+  // Якщо змінна x не дорівнює нулю, виведіть 'Вірно', інакше виведіть 'Невірно'. Перевірте  скрипт при a, що дорівнює 1, 0, -3
+
+  let x= 3;
+  if (x!=0){
+      console.log("Вірно")}else{
+      console.log("Невірно")}
+
+  console.log("NEXT TASK")
+
+  // - Дано змінну time яка рівна числу від 0 до 59. Потрібно написати код, який перевірить, до якої четверті години попадає число
+  // (в першу, другу, третю или четверту частину години).
+  let time = Math.floor(Math.random()*60);
+  console.log(time)
+  if(time>=0 && time<=15){console.log('time в першій частині')} else
+  if(time>15 && time<=30){console.log('time в другій частині')} else
+  if(time>30 && time<=45){console.log('time в третій частині')}else {console.log('time в четвертій частині')}
+
+  console.log("NEXT TASK")
+  // - У змінній day дано якесь число від 1 до 31. Потрібно визначити, у яку половину(декаду) місяця потрапляє це число (у першу, другу чи третю)
+  let day = Math.floor(Math.random()*32)+1
+  if(day>=1 && day<=10){console.log('day в першій декаді')} else
+  if(day>10 && day<=20){console.log('day в другій декаді')} else {console.log('day в третій декаді')}
+  console.log("NEXT TASK")
+
+  // - Скласти розклад на тиждень за домопоги switch. Користувач вводить порядковий номер дня тижня і на екрані відображається інфа що заплановано на цей день (можна замість плану на день, назву дня англійською).
+  let weekDay = prompt("Enter a day of week")
+  switch (weekDay){
+      case "monday":
+          console.log("It`s monday, go to work");
+
+      case "tuesday":
+          console.log("It`s tuesday, you also need go to work");
+
+      case "wednesday":
+          console.log("It`s wednesday, almost the same as tuesday, so go to work");
+
+      case "thursday":
+          console.log("It`s thursday, it`s getting closer to weekend, but still a working day");
+
+      case "friday":
+          console.log("It`s friday, the last day of work. Tomorrow will be a weekend");
+
+      case "saturday":
+          console.log("Finally saturday! Congratulations! Let`s go chill!");
+
+      case "sunday":
+          console.log("It`s a weekend, but tomorrow you need go to work! Sad, but you still can chill");
+
+  }
+  console.log("NEXT TASK")
+
+  // - Користувач вводить або має два числа.
+  //     Потрібно знайти та вивести максимальне число з тих двох .
+  //     Також потрібно врахувати коли введені рівні числа.
+  let number1 = Math.floor(Math.random()*3)+1;
+  let number2 = Math.floor(Math.random()*3)+1;;
+  if(number1>number2){
+      console.log("Перше число більше за друге:"+number1)} else if (number2>number1){
+      console.log("Друге число більше за перше:"+number2)} else {
+      console.log("Числа рівні")}
+  console.log("NEXT TASK")
+
+  // - є змінна f, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно). Напишіть код який,
+  //     за допомоги  оператора || буде присвоювати змінній х значення "default"  якщо значення змінної х являється falsy (хибноподібні, тобто приводиться до false)
+
+  let f = null;
+  if (!f){f="default";
+      console.log("f is dafault")};
+  console.log("NEXT TASK")
+  // - з файлу arrays.js (лежить в папці 2023 plan ) взяти масив coursesAndDurationArray. За допомоги іф перевірити кожен його елемент на тривалість навчання. У випадку якщо тривалість довша за 5 місяців вивести в консоль "Супер".
+  let coursesAndDurationArray = [
+      {title: 'JavaScript Complex', monthDuration: 5},
+      {title: 'Java Complex', monthDuration: 6},
+      {title: 'Python Complex', monthDuration: 6},
+      {title: 'QA Complex', monthDuration: 4},
+      {title: 'FullStack', monthDuration: 7},
+      {title: 'Frontend', monthDuration: 4}
+  ];
+  for (let i = 0; i < coursesAndDurationArray.length; i++) {
+      if(coursesAndDurationArray[i]["monthDuration"]>5){
+          console.log(`Супер, ${i+1} об'єкт більше 5 місяців`)}
+  }
+
+</script>
+</body>
+</html>
