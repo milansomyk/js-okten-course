@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_hw3_additional1</title>
+</head>
+<body>
+
+</body>
+<script>
+  // --створити масив з:
+  //         - з 5 числових значень
+  // - з 5 стічкових значень
+  // - з 5 значень стрічкового, числового та булевого типу
+  // - та вивести його в консоль
+  let arr1 = [5,2,3,4,1,'string1','string2','string3','string4','string5','string6',5,3,false,true];
+  console.log(arr1);
+
+  // -- Створити пустий масив. Наповнити його будь-якими значеннями звертаючись до конкретного індексу. Вивести в консоль
+  let arr2 = [];
+  for (let i = 0; i < 5; i++) {
+    arr2[i] = `number ${i}`;
+  }
+  console.log(arr2);
+
+  //- є масив [2,17,13,6,22,31,45,66,100,-18] :
+  // 1. перебрати його циклом while
+  console.log('1 task')
+  let arr3 = [2,17,13,6,22,31,45,66,100,-18];
+  let x=0;
+  while (x<arr3.length) {
+    console.log(arr3[x])
+    x++;
+  }
+  console.log('******')
+
+  //2. перебрати його циклом for
+  console.log('2 task')
+  for (let i = 0; i < arr3.length; i++) {
+    console.log(arr3[i])
+  }
+  console.log('******')
+
+  // 3. перебрати циклом while та вивести  числа тільки з непарним індексом
+  console.log('3 task')
+  let f=0;
+  while (f<arr3.length) {
+    if (f % 2 == 0){
+      console.log(arr3[f])
+      }f++;
+  }
+  console.log('******')
+
+  // 4. перебрати циклом for та вивести  числа тільки з непарним індексом
+  console.log('4 task')
+  for (let i = 0; i < arr3.length; i++) {
+      if (i % 2 == 0){
+          console.log(arr3[i])
+      }
+  }
+  console.log('******')
+
+  // 5. перебрати циклом while та вивести  числа тільки парні  значення
+  console.log('5 task')
+  let i5=0;
+  while (i5<arr3.length) {
+      if (arr3[i5] % 2 == 0){
+          console.log(arr3[i5])
+      }i5++;
+  }
+  console.log('******')
+
+  // 6. перебрати циклом for та вивести  числа тільки парні  значення
+  console.log('6 task')
+  for (let i6 = 0; i6 < arr3.length; i6++) {
+      if (arr3[i6] % 2 == 0){
+          console.log(arr3[i6])
+      }
+  }
+  console.log('******')
+
+  // 7. замінити кожне число кратне 3 на слово "okten"
+  console.log('7 task')
+  for (let i7 = 0; i7 < arr3.length; i7++) {
+      if (arr3[i7] % 3 == 0){
+          arr3[i7] = 'okten'
+      }
+  }
+  console.log(arr3)
+  console.log('******')
+
+  // 8. вивести масив в зворотньому порядку.
+  let arr4 = [2,17,13,6,22,31,45,66,100,-18];
+  console.log('8 task')
+  for (let i8 = arr4.length; i8 >= 0; i8--) {
+      console.log(arr4[i8])
+  }
+  console.log('******')
+
+  // 9. всі попередні завдання (окрім 8), але в зворотньому циклі (с заду на перед)
+  // Те саме що я робив, просто з декрементацією, тому не роблю
+
+  // - Створити масив з 10 числових елементів. Вивести в консоль всі його елементи в циклі.
+  console.log('10 task 1')
+  let arr101=[1,2,3,4,5,6,7,8,9,10]
+  for (let i = 0; i < arr101.length; i++) {
+      console.log(arr101[i])
+  }
+
+  // - Створити масив з 10 строкрових елементів. Вивести в консоль всі його елементи в циклі.
+  console.log('10 task 2')
+  let arr102=['arfafag','adfafadfa','asdfafasjldfa','asdfadfa','lkjlkjljml','dadfadf','lkljlkj','oiuuopiou','asdadf','qwerqwrq']
+  for (let i = 0; i < arr102.length; i++) {
+      console.log(arr102[i])
+  }
+  console.log('*****')
+
+  // - Створити масив з 10 елементів будь-якого типу. Вивести в консоль всі його елементи в циклі.
+  console.log('10 task 3')
+  let arr103=[1,'fdadfas',false,4,5,true,7,8,9,10]
+  for (let i = 0; i < arr103.length; i++) {
+      console.log(arr103[i])
+  }
+  console.log('*****')
+
+  // - Створити масив з 10 елементів числового, стірчкового і булевого типу. За допомогою if та typeof вивести тільки булеві елементи
+  console.log('10 task 4')
+  let arr104=[1,'fdadfas',false,4,5,true,7,8,9,10]
+  for (let i = 0; i < arr104.length; i++) {
+      if(typeof arr104[i]=="boolean"){
+          console.log(arr104[i])
+      }
+  }
+  console.log('*****')
+
+  // - Створити масив з 10 елементів числового, стірчкового і булевого типу. За допомогою if та typeof вивести тільки числові елементи
+  console.log('10 task 5')
+  let arr105=[1,'fdadfas',false,4,5,true,7,8,9,10]
+  for (let i = 0; i < arr105.length; i++) {
+      if(typeof arr105[i]=="number"){
+          console.log(arr105[i])
+      }
+  }
+  console.log('*****')
+
+  // - Створити масив з 10 елементів числового, стрічкового і булевого типу. За допомогою if та typeof вивести тільки рядкові елементи
+  console.log('10 task 5')
+  let arr106=[1,'fdadfas',false,4,5,true,7,8,9,10]
+  for (let i = 0; i < arr106.length; i++) {
+      if(typeof arr106[i]=="string"){
+          console.log(arr106[i])
+      }
+  }
+  console.log('*****')
+
+  // - Створити порожній масив. Наповнити його 10 елементами (різними за типами) через звернення до конкретних індексів. Вивести в консоль всі його елементи в циклі.
+  console.log('20 task 1')
+  arr201=[]
+  arr201[0]='aboba'
+  arr201[1]=12
+  arr201[2]=3
+  arr201[3]=false
+  arr201[4]='dodo'
+  arr201[5]=true
+  arr201[6]=56
+  arr201[7]=98
+  arr201[8]='map'
+  arr201[9]=true
+  for (let i = 0; i < 10; i++) {
+      console.log(arr201[i]);
+  }
+  console.log('*****')
+
+  // - Створити цикл for на 10  ітерацій з кроком 1. Вивести поточний номер кроку через console.log та document.write
+  console.log('20 task 2')
+  for (let i = 0; i < 10; i++) {
+      console.log(`Номер кроку: ${i+1}`);
+      document.write(`<p>Номер кроку: ${i+1}</p>`)
+  }
+  console.log('*****')
+
+  // - Створити цикл for на 100 ітерацій з кроком 1. Вивести поточний номер кроку через console.log та document.write
+  console.log('20 task 3')
+  for (let i = 0; i < 100; i++) {
+      console.log(`Номер кроку: ${i+1}`);
+      document.write(`<p>Номер кроку: ${i+1}</p>`)
+  }
+  console.log('*****')
+
+  // - Створити цикл for на 100 ітерацій з кроком 2. Вивести поточний номер кроку через console.log та document.write
+  console.log('20 task 4')
+  for (let i = 0; i < 100; i+=2) {
+      console.log(`Номер кроку: ${i+1}`);
+      document.write(`<p>Номер кроку: ${i+1}</p>`)
+  }
+  console.log('*****')
+
+  // - Створити цикл for на 100 ітерацій. Вивести тільки парні кроки. через console.log + document.write
+  console.log('20 task 5')
+  for (let i = 0; i < 100; i++) {
+      if(i%2 != 0){
+          console.log(`Номер кроку: ${i+1}`);
+          document.write(`<p>Номер кроку: ${i+1}</p>`)}
+
+  }
+  console.log('*****')
+
+  // - Створити цикл for на 100 ітерацій. Вивести тільки непарні кроки. через console.log + document.write
+  console.log('20 task 6')
+  for (let i = 0; i < 100; i++) {
+      if(i%2 == 0){
+          console.log(`Номер кроку: ${i+1}`);
+          document.write(`<p>Номер кроку: ${i+1}</p>`)}
+
+  }
+  console.log('*****')
+
+  // стоврити масив книжок (назва, кількість сторінок, автори , жанри).
+  booksArr=[
+      {name:'Adventures',pages:200,authors:['F Kasandra','D Sherlock'], genre:['romantic','fantastic']},
+      {name:'Trip',pages:100,authors:['G Kolean'], genre:['fantastic','detective']},
+      {name:'Chemistry',pages:200,authors:['G Kael'], genre:['scientific']},
+      {name:'Forest',pages:300,authors:['F Dial','A Barn'], genre:['romantic','fantastic','detective','storytell']},
+      {name:'River',pages:58,authors:['H Harry','K Loem','M Dienstro'], genre:['fantastic','detective']},
+      {name:'Math',pages:400,authors:['D Fael','J Jarry'], genre:['scientific']},
+      {name:'Mountains',pages:150,authors:['J Jarry'], genre:['fantastic']},
+      {name:'Sea',pages:700,authors:['D Fael','G Kolean'], genre:['naturetell','scientific']},
+      {name:'Materials',pages:250,authors:['G Ferol','H Watkins','S Siemons'], genre:['scientific']},
+      {name:'Stones',pages:256,authors:['D Jones'], genre:['fantastic','storytell']}
+  ]
+
+  // -знайти наібльшу книжку.
+  console.log('30 task 1')
+  let bigestBook=0
+  for (let booksArrElement of booksArr) {
+      if(booksArrElement.pages>bigestBook){
+          bigestBook=booksArrElement.pages;
+      }
+  }
+  console.log(bigestBook)
+
+  // - знайти книжку/ки з найбільшою кількістю жанрів
+  console.log('30 task 2')
+  let bigestGenreBook=0
+  for (let booksArrElement of booksArr) {
+      if(booksArrElement.genre.length>bigestGenreBook){
+          bigestGenreBook=booksArrElement.genre.length;
+      }
+  }
+  console.log(bigestGenreBook)
+
+  // - знайти книжку/ки з найдовшою назвою
+  console.log('30 task 3')
+  let bigestNameLengthBook=0
+  for (let booksArrElement of booksArr) {
+      if(booksArrElement.name.length>bigestNameLengthBook){
+          bigestNameLengthBook=booksArrElement.name.length;
+          bigestName=booksArrElement.name
+      }
+  }
+  console.log(bigestNameLengthBook)
+  console.log(bigestName)
+
+  // - знайти книжку/ки які писали 2 автори
+  console.log('30 task 4')
+  let fewAuthorsBooks = []
+  for (let booksArrElement of booksArr) {
+      if(booksArrElement.authors.length>=2){
+          fewAuthorsBooks[fewAuthorsBooks.length]=booksArrElement.name;
+      }
+  }
+  console.log(fewAuthorsBooks)
+
+  // - знайти книжку/ки які писав 1 автор
+  console.log('30 task 5')
+  let fewAuthorsBooks2 = []
+  for (let booksArrElement of booksArr) {
+      if(booksArrElement.authors.length==1){
+          fewAuthorsBooks2[fewAuthorsBooks2.length]=booksArrElement.name;
+      }
+  }
+  console.log(fewAuthorsBooks2)
+
+</script>
+</html>
