@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Є сторінка index.html (назва довільна), при відвідуванні якої в локальне сховще, в масив sessions зберігається інформація про дату та час відвідування сторінки.
+    // Є ще сторінка sessions.html (назва довільна), при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html.
+    // Інфу НЕ виводити в консоль, а побудувати дом структуру під кожну сессію
+
+    addEventListener("load",function (){
+        let storageDate = localStorage.getItem('date and time')
+        console.log(storageDate)
+
+        let date = new Date()
+        let currentDate=date.toJSON()
+
+        let localDate = []
+        localDate.push(currentDate)
+        console.log(localDate)
+        let s = JSON.stringify(localDate);
+        console.log(JSON.parse(s))
+
+        if (storageDate===null){
+            localStorage.setItem('date and time', s)
+
+        } else {
+            let storageDate = []
+            let JSONdate = (localStorage.getItem('date and time'))
+            console.log(JSONdate);
+            let parseS = JSON.parse(JSONdate)
+            console.log(parseS)
+            storageDate.push(JSONdate)
+            storageDate.push(JSON.stringify(localDate))
+            console.log(storageDate);
+            // console.log(localDate)
+            localStorage.setItem('date and time', storageDate)
+
+
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_hw10</title>
+</head>
+<body>
+    <form name = "form1">
+        <input type="text" name="name">
+        <input type="text" name="surname">
+        <input type="number" name="age">
+        <button type="submit">Зчитати</button>
+    </form>
+    <div id="reload-number">
+
+    </div>
+    <div id="number"></div>
+<script>
+    // Стоврити форму з трьома полями для name,sruname,age та кнопкою. При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ. Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом
+    let form1 = document.forms.form1;
+
+    form1.addEventListener('submit', function (e){
+        e.preventDefault()
+        let obj = {name:this.name.value, surname: this.surname.value, age: this.age.value}
+        let divObj = document.createElement('div');
+        divObj.style="border: solid; border-radius: 5px; margin: 10px;  text-align: center; width: 25%"
+        divObj.innerHTML = `<p>${obj.name}</p><p>${obj.surname}</p><p>${obj.age}</p>`
+        document.body.appendChild(divObj)
+    })
+
+    // є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
+
+    let reloadDiv = document.getElementById('reload-number');
+
+    let firstLoad = localStorage.getItem("reloadNumber");
+
+
+    if (firstLoad === null) {
+        localStorage.setItem("reloadNumber","1");
+        reloadDiv.innerHTML=`<p>1</p>`
+    } else {
+        let reloadNumber = localStorage.getItem("reloadNumber");
+        reloadNumber++
+        console.log(reloadNumber)
+        localStorage.setItem("reloadNumber",`${JSON.stringify(reloadNumber)}`)
+        reloadDiv.innerHTML=`<p>${reloadNumber}</p>`
+    }
+    //або інший варіант
+
+    const count = localStorage.getItem('count') || 0
+    const block = document.getElementById('number')
+    const newCount = (+count + 1).toString()
+    block.innerText = newCount
+    localStorage.setItem('count', newCount)
+
+    // зробити масив на 100 об'єктів та дві кнопки prev next
+    // при завантажені сторінки з'являються перші 10 об'єктів.
+    //     При натисканні next виводяться настпні 10 об'єктів
+    // При натисканні prev виводяться попередні 10 об'єктів
+
+    let productsArray = [
+        {name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'cake',price: 100},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},
+        {name: 'strawberry',price: 60},
+        {name: 'catfood',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'garlic',price: 30},
+        {name: 'cookie',price: 20},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'milk',price: 30},
+        {name: 'soup',price: 40},
+        {name: 'canned-fish',price: 65},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'cake',price: 100},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},{name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'cake',price: 100},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},{name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'cake',price: 100},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},{name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'cake',price: 100},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},{name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'cake',price: 100},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},{name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'cake',price: 100},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},{name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'peanuts',price: 60},
+        {name: 'peanut butter',price: 80},
+        {name: 'coke',price: 40},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},{name: 'milk',price: 30},
+        {name: 'bread',price: 15},
+        {name: 'toasted-bread',price: 25},
+        {name: 'ketchup',price: 40},
+        {name: 'egg',price: 4},
+        {name: 'yogurt',price: 45},
+        {name: 'orange',price: 10},
+        {name: 'shampoo',price: 70},
+        {name: 'soda',price: 30},
+        {name: 'juice',price: 50},
+    ]
+    console.log(productsArray.length)
+    let listNumber = 0
+
+    addEventListener('load', function (){
+
+        for (let i=0; i < 10; i++) {
+            let li = document.createElement("li");
+            li.innerText = `${productsArray[i].name}, ${productsArray[i].price}`
+            ul.appendChild(li)
+            listNumber++
+        }
+        console.log(listNumber)
+        if (listNumber<=10){previousButton.disabled=true}else{previousButton.disabled=false}
+        if (listNumber>=100){nextButton.disabled=true}else{nextButton.disabled=false}
+    })
+    let div = document.createElement("div");
+    document.body.appendChild(div)
+    let ul = document.createElement('ul')
+    div.appendChild(ul)
+
+    let buttonsDiv = document.createElement("div");
+    buttonsDiv.style="display: flex"
+    let previousButton = document.createElement("button");
+    previousButton.innerText="previous"
+    let nextButton = document.createElement("button");
+    nextButton.innerText="next"
+    buttonsDiv.append(previousButton,nextButton)
+    document.body.appendChild(buttonsDiv)
+
+    nextButton.addEventListener('click', function (){
+        let lis = document.getElementsByTagName('li')
+        for (const li of lis) {
+            li.innerText=`${productsArray[listNumber].name}, ${productsArray[listNumber].price}`
+            listNumber++
+        }
+        console.log(listNumber)
+        if (listNumber<=10){previousButton.disabled=true}else{previousButton.disabled=false}
+        if (listNumber>=productsArray.length){nextButton.disabled=true}else{nextButton.disabled=false}
+    })
+    previousButton.addEventListener('click', function (){
+        let lis = document.getElementsByTagName('li')
+        listNumber-=20
+        for (const li of lis) {
+            li.innerText=`${productsArray[listNumber].name}, ${productsArray[listNumber].price}`
+            listNumber++
+        }
+        console.log(listNumber)
+        if (listNumber<=10){previousButton.disabled=true}else{previousButton.disabled=false}
+        if (listNumber>=productsArray.length){nextButton.disabled=true}else{nextButton.disabled=false}
+    })
+
+</script>
+</body>
+</html>
