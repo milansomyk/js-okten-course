@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user-details</title>
+</head>
+<body>
+
+</body>
+<script>
+    let url = new URL(document.URL).searchParams.get('id')
+    console.log(url);
+    fetch(`https://jsonplaceholder.typicode.com/users/${url}`)
+        .then(response => response.json())
+        // address company email id name phone username website
+        .then(user => {
+            let divElement = document.createElement("div");
+            document.body.appendChild(divElement)
+            console.log(Object.entries(user));
+
+            h(user)
+
+            function h(object){
+                let v = Object.entries(object)
+                for (let vElement of v) {
+                    if (typeof vElement[1] === 'object'){
+                        let pElement = document.createElement('p');
+                        pElement.innerHTML =`<br>${vElement[0]}:`
+                        pElement.style="font-weight: bold;"
+                        divElement.appendChild(pElement)
+                         h(vElement[1])
+                    } else {
+                        let pElement = document.createElement('p');
+                        pElement.innerText = `${vElement[0]}: ${vElement[1]}`
+                        divElement.appendChild(pElement)
+                    }
+                }
+            }
+
+
+        })
+
+</script>
+</html>

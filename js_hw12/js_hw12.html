@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_hw12</title>
+</head>
+<body>
+
+</body>
+<script>
+  fetch('https://jsonplaceholder.typicode.com/users')
+          .then(response => response.json())
+          .then(users =>{
+              // address company email id name phone username website
+              for (const user of users) {
+                  let ulElement = document.createElement('ul');
+                  ulElement.classList.add('users')
+                  let liElement = document.createElement('li');
+                  ulElement.appendChild(liElement)
+                  liElement.innerHTML = `<a href="js_hw_12_user-details.html?id=${user.id}">ID: ${user.id}; Name: ${user.name}</a>`
+                  document.body.appendChild(ulElement)
+
+              }
+          })
+
+
+</script>
+</html>
