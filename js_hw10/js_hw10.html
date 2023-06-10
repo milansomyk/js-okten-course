@@ -15,6 +15,14 @@
 
     </div>
     <div id="number"></div>
+    <div id="text">Тут текст</div>
+    <form name="form2">
+        <input type="number" name="rows">
+        <input type="number" name="columns">
+        <input type="text" name="content">
+        <button type="submit" name="creator">Створити таблицю</button>
+    </form>
+
 <script>
     // Стоврити форму з трьома полями для name,sruname,age та кнопкою. При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ. Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом
     let form1 = document.forms.form1;
@@ -31,7 +39,6 @@
     // є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
 
     let reloadDiv = document.getElementById('reload-number');
-
     let firstLoad = localStorage.getItem("reloadNumber");
 
 
@@ -165,8 +172,8 @@
             listNumber++
         }
         console.log(listNumber)
-        if (listNumber<=10){previousButton.disabled=true}else{previousButton.disabled=false}
-        if (listNumber>=100){nextButton.disabled=true}else{nextButton.disabled=false}
+        previousButton.disabled = listNumber <= 10;
+        nextButton.disabled = listNumber >= 100;
     })
     let div = document.createElement("div");
     document.body.appendChild(div)
@@ -189,8 +196,8 @@
             listNumber++
         }
         console.log(listNumber)
-        if (listNumber<=10){previousButton.disabled=true}else{previousButton.disabled=false}
-        if (listNumber>=productsArray.length){nextButton.disabled=true}else{nextButton.disabled=false}
+        previousButton.disabled = listNumber <= 10;
+        nextButton.disabled = listNumber >= productsArray.length;
     })
     previousButton.addEventListener('click', function (){
         let lis = document.getElementsByTagName('li')
@@ -200,8 +207,50 @@
             listNumber++
         }
         console.log(listNumber)
-        if (listNumber<=10){previousButton.disabled=true}else{previousButton.disabled=false}
-        if (listNumber>=productsArray.length){nextButton.disabled=true}else{nextButton.disabled=false}
+        previousButton.disabled = listNumber <= 10;
+        nextButton.disabled = listNumber >= productsArray.length;
+    })
+    // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text"
+
+    let textElement = document.getElementById('text');
+    textElement.addEventListener('click', ()=>{
+        textElement.remove()
+    })
+
+    // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
+    let inputElement = document.createElement('input');
+    inputElement.type='number'
+    document.body.append(inputElement)
+    let buttonInput = document.createElement('button')
+    buttonInput.innerText="Підтвердити вік"
+    document.body.append(buttonInput)
+    buttonInput.addEventListener('click', ()=>{
+        if (inputElement.value>=18){
+            alert('Вік підтверджено')
+        } else {
+            alert('Вам нема 18 років')
+        }
+    })
+    // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+    //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+    // (Додатковачастина для завдання)
+    let tableForm = document.forms.form2
+    tableForm.addEventListener('submit',  function (e){
+        e.preventDefault()
+        let table = document.createElement('table');
+        for (let i = 0; i < this.rows.value; i++) {
+            let tr = document.createElement('tr');
+            console.log(i)
+            table.append(tr)
+            for (let j = 0; j < this.columns.value; j++) {
+                let td = document.createElement('td')
+                td.innerText = `${this.content.value}`
+                tr.append(td)
+            }
+
+        }
+        document.body.append(table)
+
     })
 
 </script>

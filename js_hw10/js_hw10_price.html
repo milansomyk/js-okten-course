@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id = "priceDiv">
+  100
+</div>
+
+</body>
+<script>
+  // *** (подібне було вище, але...будьте уважні в другій частині) створити сторінку з довільним блоком, в середині якого є значення "100грн"
+  // при перезавантаженні сторінки до значаення додається по 10грн, але !!!
+  //         зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
+  //         При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається
+  addEventListener('load',function (){
+    let localDate = new Date().toJSON()
+
+    let priceDiv = document.getElementById('priceDiv');
+    priceDiv.innerText = localStorage.getItem('priceDiv') || '100'
+
+    if (localStorage.getItem('loadTime')){
+      let storageTime = (new Date(JSON.parse(localStorage.getItem('loadTime')))).getTime()/1000;
+      let localTime = new Date(localDate).getTime() / 1000;
+
+      if (localTime-storageTime>=10){
+        priceDiv.innerText = `${+priceDiv.innerText+10}`
+          localStorage.setItem('priceDiv',priceDiv.innerText)
+      }
+    }
+      localStorage.setItem('loadTime', JSON.stringify(localDate))
+
+  })
+</script>
+</html>

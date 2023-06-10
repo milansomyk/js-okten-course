@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sessions js_hw10</title>
+</head>
+<body>
+
+</body>
+<script>
+  if (localStorage.getItem('dateTime')){
+    let dateTime =JSON.parse(localStorage.getItem('dateTime'))
+    console.log(dateTime)
+    for (const dateTimeElement of dateTime) {
+      let div = document.createElement('div');
+      let date = new Date(dateTimeElement)
+      console.log(date)
+      div.innerText = date
+      document.body.append(div)
+    }
+
+
+  }
+</script>
+</html>
