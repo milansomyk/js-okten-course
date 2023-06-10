@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  fetch('https://jsonplaceholder.typicode.com/users')
+          .then(response => response.json())
+          .then(users =>{
+            // address company email id name phone username website
+            for (const user of users) {
+              let divElement = document.createElement('div');
+              divElement.classList.add('user')
+              divElement.innerHTML = `ID: ${user.id}; Name: ${user.name}`
+              let userButton = document.createElement('button');
+              userButton.id=user.id
+              userButton.innerText='Деталі'
+              userButton.setAttribute('a',`user-details.html?id=${user.id}`)
+              divElement.appendChild(userButton)
+              document.body.appendChild(divElement)
+
+            }
+          })
+
+
+</script>
+</html>
