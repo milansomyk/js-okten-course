@@ -16,11 +16,13 @@
               let divElement = document.createElement('div');
               divElement.classList.add('user')
               divElement.innerHTML = `ID: ${user.id}; Name: ${user.name}`
+              let aLink = document.createElement('a')
+              aLink.setAttribute('href',`user-details.html?id=${user.id}`)
               let userButton = document.createElement('button');
               userButton.id=user.id
               userButton.innerText='Деталі'
-              userButton.setAttribute('a',`user-details.html?id=${user.id}`)
-              divElement.appendChild(userButton)
+              divElement.appendChild(aLink)
+              aLink.appendChild(userButton)
               document.body.appendChild(divElement)
 
             }

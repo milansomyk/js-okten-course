@@ -7,14 +7,20 @@
 <body>
 
 </body>
+<style>
+    body{
+        margin: 0;
+    }
+</style>
 <script>
-    let url = new URL(document.URL).searchParams.get('id')
-    console.log(url);
-    fetch(`https://jsonplaceholder.typicode.com/users/${url}`)
+    let userId = new URL(document.URL).searchParams.get('id')
+    console.log(userId);
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         .then(response => response.json())
         // address company email id name phone username website
         .then(user => {
             let divElement = document.createElement("div");
+            divElement.classList.add('info')
             document.body.appendChild(divElement)
             console.log(Object.entries(user));
 
@@ -36,9 +42,48 @@
                     }
                 }
             }
-
-
         })
+        .then(() => {
+            fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+            .then(response => response.json())
+            .then(userPosts => {
+                let userPostsButton = document.createElement('button');
+                userPostsButton.innerText='Пости'
+
+                document.body.appendChild(userPostsButton)
+
+                userPostsButton.addEventListener('click',function (){
+
+                    let firstRowPosts = document.createElement('div');
+                    firstRowPosts.classList.add('firstRowPosts')
+                    firstRowPosts.style='display:flex; justify-content: space-around'
+
+                    let secondRowPosts = document.createElement('div')
+                    secondRowPosts.style='display:flex; justify-content: space-around'
+                    secondRowPosts.classList.add('secondRowPosts')
+
+                    document.body.append(firstRowPosts,secondRowPosts)
+
+                    for (const userPost of userPosts) {
+                        let postDiv = document.createElement('div');
+                        postDiv.classList.add('post')
+                        postDiv.style='width:18%'
+                        postDiv.innerHTML=`<p class="title">${userPost.title}</p>`
+                        console.log(userPost.id)
+                        let postDetailsButton = document.createElement('button');
+                        postDetailsButton.innerText='Деталі поста'
+                        let aLink = document.createElement('a')
+                        aLink.setAttribute('href',`post-details.html?id=${userPost.id}`)
+                        postDiv.appendChild(aLink)
+                        aLink.appendChild(postDetailsButton)
+                            if (firstRowPosts.childElementCount<5){firstRowPosts.appendChild(postDiv)}else{
+                            secondRowPosts.appendChild(postDiv)
+                        }
+                    }
+                })
+            })
+        })
+
 
 </script>
 </html>
