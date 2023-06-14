@@ -1,0 +1,89 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+}
+#info{
+    width: 50%;
+    background-color: #e2dcd5;
+    border-radius: 5%;
+    margin: 3% 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+p{
+    text-align: center;
+    margin: 3px 0 3px 0;
+    width: 90%;
+}
+#infoHolder{
+    margin: 20px 0 20px 0;
+    background-color: #e8aa8c;
+    border-radius:10%;
+    padding: 20px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    margin: 5%;
+    height: 100%;
+    background-color:  #e8aa8c;
+    border-radius: 10%;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+
+}
+.postsButton{
+    margin: 0 0 20px 0;
+    width: 150px;
+}
+.post{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e2dcd5;
+    border-radius: 10%;
+    height: 150px;
+    transition: 0.5s;
+
+}
+.post:hover{
+    flex-grow: 0.5;
+    transition: 0.5s;
+}
+.firstRowPosts {
+    margin: 3% 0 3% 0;
+    width: 50%;
+}
+.secondRowPosts{
+    width: 50%;
+    margin: 0 0 3% 0;
+}
+button{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    border-radius: 15%;
+    border-color: transparent;
+    background-color:  #5e616a;
+    transition: 0.5s;
+}
+button:hover {
+    background-color: #484848;
+    transition: 0.5s;
+}
+.postDetails{
+    margin:  0 0 10px 0;
+
+}
