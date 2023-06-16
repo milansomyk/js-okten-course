@@ -1,4 +1,5 @@
 let ID = new URL(document.URL).searchParams.get('id')
+let backgroundDiv = document.getElementById('background')
 fetch(`https://jsonplaceholder.typicode.com/posts/${ID}`)
     .then(response => response.json())
     .then(userPost=>{
@@ -6,7 +7,10 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${ID}`)
         console.log(userPost)
 
         let userPostEntries = Object.entries(userPost);
-        let postInfoDiv = document.getElementById('postInfo');
+        let postInfoDiv = document.createElement('div');
+        postInfoDiv.classList.add('postInfo')
+
+        backgroundDiv.appendChild(postInfoDiv)
         for (const userPostEntry of userPostEntries) {
             let pElement = document.createElement('p');
 
@@ -25,7 +29,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${ID}`)
 
                 let divElement = document.createElement('div');
                 divElement.classList.add('comments')
-                document.body.appendChild(divElement)
+                backgroundDiv.appendChild(divElement)
 
                 fillObjectInElement(userPosts, divElement)
 

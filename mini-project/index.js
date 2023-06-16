@@ -1,9 +1,9 @@
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => {
-        // address company email id name phone username website
         let usersDiv = document.getElementById('users');
         let array = []
+
         for (const user of users) {
             let pElement = document.createElement('p');
             pElement.classList.add('user')

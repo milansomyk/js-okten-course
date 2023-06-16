@@ -1,21 +1,18 @@
 
 let ID = new URL(document.URL).searchParams.get('id')
-let divElement = document.createElement("div");
-divElement.id='info'
+let info = document.getElementById("info");
+let userInfo = document.getElementById('user-info')
+let swipeDiv = document.getElementById('swipeDiv')
+
+
 fetch(`https://jsonplaceholder.typicode.com/users/${ID}`)
     .then(response => response.json())
     // address company email id name phone username website
     .then(user => {
 
-        let infoHolder = document.createElement("div");
-        infoHolder.id="infoHolder"
-
-        document.body.appendChild(divElement)
-        divElement.appendChild(infoHolder)
-
         console.log(Object.entries(user));
 
-        fillObjectInElement(user, infoHolder)
+        fillObjectInElement(user, userInfo)
 
     })
     .then(() => {
@@ -26,19 +23,16 @@ fetch(`https://jsonplaceholder.typicode.com/users/${ID}`)
                 userPostsButton.innerText='Posts'
                 userPostsButton.classList.add('postsButton')
 
-                divElement.appendChild(userPostsButton)
+                info.appendChild(userPostsButton)
 
                 userPostsButton.addEventListener('click',function (){
+                    info.id="info-after"
+                    swipeDiv.id="swipedDiv"
+                    userPostsButton.disabled='true'
 
-                    let firstRowPosts = document.createElement('div');
-                    firstRowPosts.classList.add('firstRowPosts')
-                    firstRowPosts.style='display:flex; justify-content: space-around'
-
-                    let secondRowPosts = document.createElement('div')
-                    secondRowPosts.style='display:flex; justify-content: space-around'
-                    secondRowPosts.classList.add('secondRowPosts')
-
-                    document.body.append(firstRowPosts,secondRowPosts)
+                    let posts = document.createElement('div');
+                    posts.classList.add('postsDiv')
+                    document.body.appendChild(posts)
 
                     for (const userPost of userPosts) {
                         let postDiv = document.createElement('div');
@@ -57,10 +51,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${ID}`)
 
                         postDiv.appendChild(aLink)
                         aLink.appendChild(postDetailsButton)
-
-                        if (firstRowPosts.childElementCount<5){firstRowPosts.appendChild(postDiv)}else{
-                            secondRowPosts.appendChild(postDiv)
-                        }
+                        posts.appendChild(postDiv)
                     }
                 })
             })

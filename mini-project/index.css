@@ -8,19 +8,15 @@ body{
     font-family: 'Quicksand', sans-serif;
 
 }
-
 #users{
     background-color: #e2dcd5;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
-    border-radius: 10%;
     width: 700px;
     height: 600px;
     justify-content: space-evenly;
 }
-
-
 .userDiv{
     width: 45%;
     display: flex;
@@ -29,13 +25,16 @@ body{
     align-items: center;
     background-color: #e8aa8c;
     margin: 20px 0 20px 0;
-    border-radius: 20%;
     overflow: hidden;
+}
+p{
+    color: white;
+    margin: 5px 0 5px 0;
+    text-align: center;
 }
 button{
     font-family: 'Quicksand', sans-serif;
     color: white;
-    border-radius: 15%;
     border-color: transparent;
     background-color: #5e616a;
     width: 150px;
@@ -45,9 +44,3 @@ button:hover{
     background-color: #484848;
     transition: 0.5s;
  }
-p{
-    color: white;
-    margin: 5px 0 5px 0;
-
-    text-align: center;
-}
