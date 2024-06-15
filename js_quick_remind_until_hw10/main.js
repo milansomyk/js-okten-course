@@ -3,10 +3,8 @@ let form = document.getElementById("only-one-form");
 let localItem = localStorage.getItem("itemsList");
 let div = document.getElementById("items-list");
 
-let itemList;
+let itemList = [];
 function loadDiv(){
-
-
     localItem? itemList = JSON.parse(localItem) : localStorage.setItem("itemsList","");
     for (const item of itemList) {
         let paragraphElement = document.createElement("p");
@@ -15,9 +13,8 @@ function loadDiv(){
         div.appendChild(paragraphElement);
     }
 }
-if(itemList!==null){
     loadDiv();
-}
+
 
 button.addEventListener("click",function(e){
     e.preventDefault();
@@ -33,4 +30,13 @@ button.addEventListener("click",function(e){
     div.appendChild(paragraphElement);
 
     // loadDiv();
+})
+fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json()).then(json=>{
+    let jsonDiv = document.getElementById("json-placeholder");
+    for (const user of json) {
+        let htmlParagraphElement = document.createElement("p");
+        htmlParagraphElement.classList.add("user");
+        htmlParagraphElement.innerText=`${user.id}: ${user.name}: ${user.email}\n`;
+        jsonDiv.append(htmlParagraphElement)
+    }
 })
